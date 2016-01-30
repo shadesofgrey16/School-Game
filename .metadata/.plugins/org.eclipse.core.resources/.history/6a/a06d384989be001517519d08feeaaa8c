@@ -1,0 +1,104 @@
+package main;
+
+import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.List;
+
+import graphics.Frame;
+import graphics.renderer.SystemLog;
+
+public class Game implements Runnable {
+
+	boolean running = false;
+	boolean DEBUG = true;
+	Thread GT;
+	//ArrayList<Frame> graphics = new ArrayList<Frame>();
+	List graphics = new ArrayList<>();
+	public SystemLog sl;
+	
+	
+	Game(){
+		GT = new Thread();
+		init();
+		run();
+	}
+	
+	@Override
+	public void run() {
+		
+		System.out.println("Game has started.");
+		
+		sl.add("the game has been running for " + counter++);
+		
+		int count = 0;
+		
+		while(running){
+		
+			if(paused == false){
+			update();
+			}
+			
+			//System.out.println(sl.getSize());
+			
+			tick();
+		}
+		
+	}
+	boolean paused = false;
+	
+	public void pause(){
+		paused = true;
+		System.out.println("Thread paused");
+	}
+	
+	public void restart(){
+		paused = false;
+		System.out.println("Thread restarted");
+	}
+	
+	public void init(){
+		GT.start();
+		running = true;
+		sl = new SystemLog();
+		Frame frame = new Frame(this);
+		//graphics.add(systemLog);
+	}
+	
+	int counter = 0;
+	public void update(){
+		sl.update();
+	}
+	
+	public void render(Graphics g){
+		sl.render(g);
+	}
+	
+	public void tick(){
+		try {
+			GT.sleep(1000);
+			System.out.println("Thread is sleeping.");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public List getGraphics(){
+		return graphics;
+	}
+	
+}
+
+class Main {
+
+	public static void main(String args[]){
+		
+		System.out.println("Beginning game.");
+		
+		Game g = new Game();
+		
+	}
+	
+}
+
+

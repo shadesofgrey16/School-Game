@@ -1,0 +1,7 @@
+package map.tile;
+
+abstract public class BaseTile {
+
+	private int xPos, yPos;
+	
+}

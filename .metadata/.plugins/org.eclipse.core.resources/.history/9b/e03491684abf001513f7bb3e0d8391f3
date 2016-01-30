@@ -1,0 +1,17 @@
+package entity;
+
+public class EntityPlayer extends BaseEntity{
+
+	String name;
+	
+	public EntityPlayer(){
+		
+	}
+	
+	public EntityPlayer(int x, int y, String nam){
+		setxPos(x);
+		setyPos(y);
+		name = nam;
+	}
+	
+}

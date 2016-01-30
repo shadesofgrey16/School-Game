@@ -1,0 +1,16 @@
+package map.tile;
+
+import java.awt.Graphics;
+
+public class ColoredTile extends BaseTile{
+
+	public ColoredTile(int re, int gr, int bl, int x, int y) {
+		super(re, gr, bl, x, y);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void draw(Graphics g){
+		g.drawRect(getxPos(), getyPos(), 32, 32);
+	}
+}

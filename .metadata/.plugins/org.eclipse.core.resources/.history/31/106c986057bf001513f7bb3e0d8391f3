@@ -1,0 +1,13 @@
+package map.tile;
+
+import java.awt.Graphics;
+
+abstract public class BaseTile {
+
+	private int xPos, yPos;
+	
+	public void draw(Graphics g, int x, int y){
+		
+	}
+	
+}

@@ -1,0 +1,96 @@
+package main.loader;
+
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import map.Map;
+import map.tile.BaseTile;
+import map.tile.ColoredTile;
+import map.tile.Tile;
+
+public class ResourceLoader {
+
+	final String RESOURCEPATH = "..\\School Game\\res";
+
+	BufferedImage im;
+	public ResourceLoader(){
+	System.out.println("");
+	
+	
+	File resCount;
+
+	
+	resCount = new File(RESOURCEPATH);
+	
+	System.out.println(resCount.listFiles());
+	
+	/*
+	FileWriter fileWriter = null;
+	try {
+		fileWriter = new FileWriter(RESOURCEPATH + "Test.txt");
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+	
+	try {
+		fileWriter.write("Testing 1,2,3 + more");
+		System.out.println("I wrote.");
+		//fileWriter.append("Testing 1,2,3 + more");
+		
+		fileWriter.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	*/
+	}
+	
+	public void mapLoaderTxt(String nam) throws IOException{
+		
+		FileReader schematic = null;
+		String str = null;
+		try {
+			schematic = new FileReader(RESOURCEPATH + nam);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//schematic.
+		BufferedReader bufferedReader = new BufferedReader(schematic);
+		
+		//str = schematic.read();
+		while(bufferedReader.readLine() != null){
+		if(str == null){
+			str = bufferedReader.readLine();
+		}
+		str = str + bufferedReader.readLine();
+		}
+		
+		System.out.println("Finshed product = " + str);
+		schematic.close();
+	}
+	
+	public void TileLoad(String nam, Tile ti){
+		im = null;
+		try{
+		im = ImageIO.read(new File(RESOURCEPATH + nam));
+		ti.setImage(im);
+		}
+		catch(IOException e){
+			System.out.println(e);
+		}
+	}
+}

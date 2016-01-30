@@ -1,0 +1,59 @@
+package graphics;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
+
+import main.Game;
+
+public class Panel extends JPanel {
+
+	private Game ga;
+	private Frame f;
+	public Panel(Game g){
+		//f = fr;
+		//ga = f.getga();
+		ga = g;
+	}
+	
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		//g.drawRect(35, 35, 35, 35);
+		//System.out.println("From Panel " + ga.systemLog.size());
+		//if (ga.systemLog.size() > 0){
+		//for (int x =0; x >= ga.systemLog.size(); x++){
+		g.drawRect(0,0,999,999);
+		//g.setColor(Color.BLACK);
+		//ga.getCurrentMap().drawMap(g);
+		//setBackground(Color.BLACK);
+		ga.render(g);
+		
+		//}
+		repaint();
+	}
+	
+	public void drawEntities(Graphics g){
+		int dx, dy;
+		dx = -ga.getCurrentMap().getEntityList().get(0).getxPos()-32;
+		dy = -ga.getCurrentMap().getEntityList().get(0).getyPos()-32;
+				
+		for(int i = 0; i < ga.getCurrentMap().getEntityList().size(); i++){
+		if(i == 0)
+		g.setColor(new Color(0,0,0));
+		/*
+		else
+		g.setColor(new Color(ga.entityArry.get(i).getRed(),ga.entityArry.get(i).getGreen(),ga.entityArry.get(i).getBlue()));
+		
+		if(i > 0)
+		g.fillOval(ga.entityArry.get(i).getX() + dx, ga.entityArry.get(i).getY() + dy, 32, 32);
+		else
+		g.fillOval(ga.entityArry.get(i).getX(), ga.entityArry.get(i).getY(), 32, 32);
+		//ga.entityArry.get(i).draw(g);
+		 * 
+		 */
+		}
+	}
+}
+	
+

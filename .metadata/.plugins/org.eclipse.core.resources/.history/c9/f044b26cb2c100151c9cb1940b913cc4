@@ -1,0 +1,10 @@
+package map.tile;
+
+public class Tile extends BaseTile{
+
+	public Tile(int re, int gr, int bl, int x, int y) {
+		super(re, gr, bl, x, y);
+		// TODO Auto-generated constructor stub
+	}
+
+}

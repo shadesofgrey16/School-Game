@@ -1,0 +1,12 @@
+package map.tile;
+
+import java.awt.Image;
+
+public class Tile extends BaseTile{
+
+	public Tile(int re, int gr, int bl, int x, int y, Image im) {
+		super(re, gr, bl, x, y, im);
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,160 @@
+package main;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import entity.EntityPlayer;
+import main.loader.ResourceLoader;
+import map.Map;
+import map.tile.Tile;
+import graphics.Frame;
+import graphics.renderer.SystemLog;
+
+public class Game implements Runnable {
+
+	boolean running = false;
+	boolean DEBUG = true;
+	Thread GT;
+	Image[] imageArry;
+	String[] mapSchematicArry;
+	ResourceLoader rl = new ResourceLoader();
+	//ArrayList<Frame> graphics = new ArrayList<Frame>();
+	//List graphics = new ArrayList<>();
+	public SystemLog sl;
+	private Map currentMap;
+	EntityPlayer player1;
+	
+	
+	Game(){
+		GT = new Thread();
+		init();
+		run();
+	}
+	
+	@Override
+	public void run() {
+		
+		System.out.println("Game has started.");
+		
+		sl.add("the game has been running for " + counter++);
+		
+		int count = 0;
+		
+		while(running){
+		
+			if(paused == false){
+			update();
+			}
+			
+			//System.out.println(sl.getSize());
+			
+			tick();
+		}
+		
+	}
+	boolean paused = false;
+	
+	public void pause(){
+		paused = true;
+		System.out.println("Thread paused");
+	}
+	
+	public void restart(){
+		paused = false;
+		System.out.println("Thread restarted");
+	}
+	
+	public void init(){
+		GT.start();
+		imageArry = new Image[rl.getFileCount(".png")];
+		mapSchematicArry = new String[rl.getFileCount(".map")];
+		rl.FileLoadToStringArry(".map", mapSchematicArry);
+		
+		
+		rl.ImageLoadAll(this);
+		running = true;
+		sl = new SystemLog();
+		Frame frame = new Frame(this);
+		player1 = new EntityPlayer();
+		//currentMap = new Map(30,30,grass,"Test");
+		int[] imageArray = {0};
+		currentMap = new Map(imageArray,this,mapSchematicArry[0]);
+		//currentMap.addPlayer(player1);	
+		//	rl.mapLoaderTxt("\\Test.txt", currentMap);
+		//System.out.println(currentMap.getMapStrArray().length());
+		currentMap.generateMapSchematic();
+		
+		//graphics.add(systemLog);
+	}
+	
+	
+	
+	public String[] getMapSchematicArry() {
+		return mapSchematicArry;
+	}
+
+	public Image[] getImageArry() {
+		return imageArry;
+	}
+
+	public void setImageArry(Image[] imageArry) {
+		this.imageArry = imageArry;
+	}
+
+	public EntityPlayer getPlayer1() {
+		return player1;
+	}
+
+	public void setPlayer1(EntityPlayer player1) {
+		this.player1 = player1;
+	}
+
+	public Map getCurrentMap() {
+		return currentMap;
+	}
+
+	public void setCurrentMap(Map currentMap) {
+		this.currentMap = currentMap;
+	}
+	int counter = 0;
+	public void update(){
+		sl.update();
+	}
+	
+	public void render(Graphics g){
+		//currentMap.drawMap(g);
+		sl.render(g);
+	}
+	
+	public void tick(){
+		try {
+			GT.sleep(1000);
+			System.out.println("Thread is sleeping.");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/*public List getGraphics(){
+		return graphics;
+	}
+	*/
+	
+}
+
+class Main {
+
+	public static void main(String args[]){
+		
+		System.out.println("Beginning game.");
+		Game g = new Game();
+		
+	}
+	
+}
+
+

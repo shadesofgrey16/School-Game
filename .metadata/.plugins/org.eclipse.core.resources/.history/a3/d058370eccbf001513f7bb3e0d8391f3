@@ -1,0 +1,36 @@
+package graphics;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
+
+import main.Game;
+
+public class Panel extends JPanel {
+
+	private Game ga;
+	private Frame f;
+	public Panel(Game g){
+		//f = fr;
+		//ga = f.getGame();
+		ga = g;
+	}
+	
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		//g.drawRect(35, 35, 35, 35);
+		//System.out.println("From Panel " + game.systemLog.size());
+		//if (game.systemLog.size() > 0){
+		//for (int x =0; x >= game.systemLog.size(); x++){
+		//g.drawRect(0,0,999,999);
+		//g.setColor(Color.BLACK);
+		setBackground(Color.BLACK);
+		ga.render(g);
+		
+		//}
+		repaint();
+	}
+}
+	
+

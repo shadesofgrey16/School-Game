@@ -1,0 +1,44 @@
+package entity;
+
+import item.Item;
+
+public class EntityPlayer extends BaseEntity{
+
+	String name;
+	int dir;
+	
+	public EntityPlayer(){
+		
+	}
+	
+	public EntityPlayer(int x, int y, String nam){
+		setxPos(x);
+		setyPos(y);
+		name = nam;
+	}
+	
+	public void addToInventory(Item I){
+		getInventory().add(I);
+	}
+	
+	public void move(int i){
+		switch(dir){
+		case 1:
+			setxPos(getxPos()+1);
+			break;
+		case 2:
+			setxPos(getxPos()-1);
+			break;
+		case 3:
+			setyPos(getyPos()+1);
+			break;
+		case 4:
+			setyPos(getyPos()-1);
+			break;
+		default:
+			break;
+			
+		}
+	}
+	
+}

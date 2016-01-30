@@ -1,0 +1,36 @@
+package graphics;
+
+import javax.swing.JFrame;
+
+import main.Game;
+
+public class Frame extends JFrame {
+
+	Game g;
+	int width, height;
+	String title;
+	
+	public void Frame(Game ga){
+		
+		JFrame frame = new JFrame();
+		frame.setSize(width, height);
+		frame.setTitle(title);
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		frame.add(new Panel(this));
+		g = ga;
+	}
+	
+	public void Frame(Game g, int x, int y){
+		
+		JFrame frame = new JFrame();
+		frame.setSize(width, height);
+		frame.setTitle(title);
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		frame.add(new Panel(this));
+	}
+	
+	public Game getGame(){
+		return g;
+	}
+	
+}

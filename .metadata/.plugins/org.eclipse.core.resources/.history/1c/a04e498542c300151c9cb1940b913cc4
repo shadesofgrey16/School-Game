@@ -1,0 +1,116 @@
+package main.loader;
+
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import javax.imageio.ImageIO;
+import javax.swing.filechooser.FileFilter;
+
+import main.Game;
+import map.Map;
+import map.tile.BaseTile;
+import map.tile.ColoredTile;
+import map.tile.Tile;
+
+public class ResourceLoader {
+
+	final String RESOURCEPATH = "..\\School Game\\res";
+
+	BufferedImage im;
+	public ResourceLoader(){
+	System.out.println("");
+	
+	
+	File resCount;
+
+	
+	resCount = new File(RESOURCEPATH);
+	//FileFilter fl = new FileFilter();
+	
+	String[] str;
+	str = resCount.list();
+	int count = 0;
+	
+	for(int i = 0; i < str.length; i++)
+	System.out.println(str[i]);
+	
+	for(int i2 = 0; i2 < str.length; i2++){
+	
+		if(str[i2].contains(".png"))
+			count++;
+		System.out.println(count);
+		//"count " +resCount.listFiles());
+	}
+	/*
+	FileWriter fileWriter = null;
+	try {
+		fileWriter = new FileWriter(RESOURCEPATH + "Test.txt");
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+	
+	try {
+		fileWriter.write("Testing 1,2,3 + more");
+		System.out.println("I wrote.");
+		//fileWriter.append("Testing 1,2,3 + more");
+		
+		fileWriter.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	*/
+	}
+	
+	public void mapLoaderTxt(String nam, Game ga){
+		
+		String str; 
+		
+		//schematic.
+		
+		
+		//str = schematic.read();
+	
+		try {
+			str = new String(Files.readAllBytes(Paths.get(RESOURCEPATH + nam)));
+			//ma.setMapStrArray(str);
+			
+			System.out.println(str);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//str = str + "\n";
+		
+		//ma.setMapStrArray(str);
+		
+		//System.out.println(str);
+		//schematic.close();
+	}
+	
+	//public int 
+	
+	public void TileLoad(String nam, Tile ti){
+		im = null;
+		try{
+		im = ImageIO.read(new File(RESOURCEPATH + nam));
+		ti.setImage(im);
+		}
+		catch(IOException e){
+			System.out.println(e);
+		}
+	}
+}
