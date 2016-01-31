@@ -1,26 +1,14 @@
 package main.loader;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
-import javax.swing.filechooser.FileFilter;
 
 import main.Game;
-import map.Map;
-import map.tile.BaseTile;
-import map.tile.ColoredTile;
-import map.tile.Tile;
 
 public class ResourceLoader {
 
@@ -134,8 +122,8 @@ public class ResourceLoader {
 	//loads specific images into the game's image array
 	public void ImageLoad(String nam, Game ga){
 		
-		String[] str;
-		str = resCount.list();
+		//String[] str;
+		//str = resCount.list();
 		im = null;
 		try{	
 		

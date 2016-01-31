@@ -2,16 +2,12 @@ package main;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import entity.EntityPlayer;
-import main.loader.ResourceLoader;
-import map.Map;
-import map.tile.Tile;
 import graphics.Frame;
 import graphics.renderer.SystemLog;
+import main.loader.ResourceLoader;
+import map.Map;
 
 public class Game implements Runnable {
 
@@ -44,7 +40,7 @@ public class Game implements Runnable {
 		
 		sl.add("the game has been running for " + counter++);
 		
-		int count = 0;
+		//int count = 0;
 		
 		while(running){
 		
@@ -131,7 +127,7 @@ public class Game implements Runnable {
 	
 	public void tick(){
 		try {
-			GT.sleep(1000);
+			Thread.sleep(1000);
 			System.out.println("Thread is sleeping.");
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -146,7 +142,8 @@ class Main {
 	public static void main(String args[]){
 		
 		System.out.println("Beginning game.");
-		Game g = new Game();
+		//Game g = 
+		new Game();
 		
 	}
 	

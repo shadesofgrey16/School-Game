@@ -1,23 +1,26 @@
 package graphics;
 
-import java.awt.Component;
 import java.awt.Rectangle;
-import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
-import main.controls.Controls;
 import main.Game;
+import main.controls.Controls;
 
 public class Frame extends JFrame {
 
+	//Not very important, randomly generated.
+	//Used for serialization for example in HTTP protocols.
+	//Mainly added to remove warnings
+	private static final long serialVersionUID = -8841039461082864580L;
+	
 	Game g;
 	int width, height;
 	String title;
 	public Controls controls;
 	
-	public Frame(Game ga){
-		
+	public Frame(Game ga)
+	{	
 		JFrame frame = new JFrame();
 		frame.setSize(720, 720);
 		frame.setTitle("School Game");
@@ -27,8 +30,7 @@ public class Frame extends JFrame {
 		g = ga;
 		controls = new Controls(ga);
 		frame.addKeyListener(controls);
-		frame.show();
-		
+		frame.setVisible(true);
 	}
 	
 	public int getWidth() {
@@ -57,7 +59,7 @@ public class Frame extends JFrame {
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.add(new Panel(ga));
 		g = ga;
-		frame.show();
+		frame.setVisible(true);
 	}
 	
 	public Game getGame(){

@@ -5,12 +5,12 @@ import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Random;
 
+import entity.BaseEntity;
+import entity.EntityPlayer;
 import main.Game;
 import map.tile.BaseTile;
 import map.tile.ColoredTile;
 import map.tile.Tile;
-import entity.BaseEntity;
-import entity.EntityPlayer;
 
 public class Map {
 
