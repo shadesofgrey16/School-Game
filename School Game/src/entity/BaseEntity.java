@@ -1,9 +1,9 @@
 package entity;
 
-import item.Item;
-
 import java.awt.Graphics;
 import java.util.ArrayList;
+
+import item.Item;
 
 abstract public class BaseEntity {
 	private int xPos,yPos,strength,defense,health,skill,intellegence,focus;

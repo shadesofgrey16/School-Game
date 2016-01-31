@@ -26,6 +26,13 @@ abstract public class Item {
 		this.effectArray = effectArray;
 	}
 	
-	
+	@Override
+	public String toString()
+	{
+		return name + "  " + 
+				effect + "  " + 
+				useType + "  " + 
+				effectArray.toString();
+	}
 	
 }
